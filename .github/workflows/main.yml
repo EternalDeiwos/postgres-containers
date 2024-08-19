@@ -31,12 +31,16 @@ jobs:
       id: vars
       run: |
         echo "IMAGE_TAG=${{ github.event.inputs.PG_VERSION }}" >> $GITHUB_OUTPUT
+    - id: lower-owner
+      name: Repository to lowercase
+      run: |
+        echo "owner=${GITHUB_REPOSITORY_OWNER@L}" >> $GITHUB_OUTPUT
     - uses: docker/build-push-action@v3
       with:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/${{ github.repository_owner }}/postgresql:${{ steps.vars.outputs.IMAGE_TAG }}
+        tags: ghcr.io/${{ steps.lower-owner.outputs.owner }}:latest,ghcr.io/${{ steps.lower-owner.outputs.owner }}/postgresql:${{ steps.vars.outputs.IMAGE_TAG }}
         build-args: |
           POSTGRESQL_VERSION=${{ github.event.inputs.PG_VERSION }}
           EXTENSIONS=${{ github.event.inputs.EXTENSIONS }}
