@@ -40,7 +40,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ghcr.io/${{ steps.lower-owner.outputs.owner }}:latest,ghcr.io/${{ steps.lower-owner.outputs.owner }}/postgresql:${{ steps.vars.outputs.IMAGE_TAG }}
+        tags: ghcr.io/${{ steps.lower-owner.outputs.owner }}/postgresql:latest,ghcr.io/${{ steps.lower-owner.outputs.owner }}/postgresql:${{ steps.vars.outputs.IMAGE_TAG }}
         build-args: |
           POSTGRESQL_VERSION=${{ github.event.inputs.PG_VERSION }}
           EXTENSIONS=${{ github.event.inputs.EXTENSIONS }}
