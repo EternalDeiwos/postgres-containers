@@ -17,8 +17,8 @@ RUN \
     apt-get install -y --no-install-recommends curl && \
     /install_pg_extensions.sh ${EXTENSIONS} && \
     # cleanup
-    apt-get purge curl && \
-    apt-get autoremove && \
+    apt-get purge -y curl && \
+    apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /install_pg_extensions.sh
 # switch back to the postgres user
