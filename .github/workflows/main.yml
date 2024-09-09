@@ -10,15 +10,11 @@ on:
       EXTENSIONS:
         description: "Postgres extensions to install"
         required: true
-        default: "cron pgvector h3 postgis-3 pgrouting pg_uuidv7"
+        default: "cron pgvector h3 postgis-3 pgrouting uuidv7-sql"
       TIMESCALEDB_VERSION:
         description: "TimescaleDB version"
         required: true
         default: "2.16.1"
-      UUID_V7_VERSION:
-        description: "pg_uuidv7 version"
-        required: true
-        default: "v1.5.0"
 jobs:
   build:
     runs-on: ubuntu-latest
