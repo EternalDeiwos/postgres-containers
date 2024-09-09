@@ -38,8 +38,9 @@ for EXTENSION in ${EXTENSIONS}; do
         TEMP_DIR="$(mktemp -d)"
         cd $TEMP_DIR
         
-        curl -L "https://github.com/dverite/postgres-uuidv7-sql/archive/961891b4a35e851cacb54f4dfb4826d181514c90.tar.gz" -o postgres-uuidv7-sql.tar.gz 
-        tar xf postgres-uuidv7-sql.tar.gz
+        curl -LO "https://github.com/dverite/postgres-uuidv7-sql/archive/961891b4a35e851cacb54f4dfb4826d181514c90.tar.gz"
+        tar xf postgres-uuidv7-sql-961891b4a35e851cacb54f4dfb4826d181514c90.tar.gz
+        cd postgres-uuidv7-sql-961891b4a35e851cacb54f4dfb4826d181514c90
         cp sql/uuidv7-sql--1.0.sql uuidv7-sql.control "$(pg_config --sharedir)/extension"
         rm -r $TEMP_DIR
 
