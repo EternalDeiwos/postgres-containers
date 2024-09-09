@@ -34,16 +34,14 @@ for EXTENSION in ${EXTENSIONS}; do
         continue
     fi
 
-    if [ "$EXTENSION" == "pg_uuidv7" ]; then
+    if [ "$EXTENSION" == "uuidv7-sql" ]; then
         TEMP_DIR="$(mktemp -d)"
         cd $TEMP_DIR
         
-        curl -LO "https://github.com/fboulnois/pg_uuidv7/releases/download/${UUID_V7_VERSION}/{pg_uuidv7.tar.gz,SHA256SUMS}" 
-        tar xf pg_uuidv7.tar.gz
-        sha256sum -c SHA256SUMS
-        PG_MAJOR=$(pg_config --version | sed 's/^.* \([0-9]\{1,\}\).*$/\1/')
-        cp "$PG_MAJOR/pg_uuidv7.so" "$(pg_config --pkglibdir)"
-        cp pg_uuidv7--1.5.sql pg_uuidv7.control "$(pg_config --sharedir)/extension"
+        https://github.com/github/codeql/archive/aef66c462abe817e33aad91d97aa782a1e2ad2c7.zip
+        curl -LO "https://github.com/dverite/postgres-uuidv7-sql/archive/961891b4a35e851cacb54f4dfb4826d181514c90.tar.gz" 
+        tar xf 961891b4a35e851cacb54f4dfb4826d181514c90.tar.gz
+        cp sql/uuidv7-sql--1.0.sql uuidv7-sql.control "$(pg_config --sharedir)/extension"
         rm -r $TEMP_DIR
 
         continue
