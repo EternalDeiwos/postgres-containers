@@ -5,6 +5,10 @@ set -euxo pipefail
 
 # install extensions
 EXTENSIONS="$@"
+
+# determine postgresql version, store major number in PG_MAJOR -- no longer provided by env var in parent images
+PG_MAJOR=$(psql -V | awk '{print $3}' | cut -d. -f1)
+
 # cycle through extensions list
 for EXTENSION in ${EXTENSIONS}; do    
     # special case: timescaledb
